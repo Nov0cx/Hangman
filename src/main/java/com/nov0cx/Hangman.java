@@ -85,8 +85,7 @@ public class Hangman {
                 System.out.println(ConsoleColor.GREEN + "You already guessed that character." + ConsoleColor.RESET);
                 continue;
             }
-            if (wrong > max)
-                break;
+
             if (read.equals(c))
                 break;
             if (c.contains(read)) {
@@ -109,9 +108,11 @@ public class Hangman {
             System.out.println(ConsoleColor.GREEN + "You already guessed " + Arrays.toString(guessed.toArray()) + "." + ConsoleColor.RESET);
             System.out.println(ConsoleColor.GREEN + realPattern + ConsoleColor.RESET);
             allGuessed.add(read.toCharArray()[0]);
+            if (wrong > max - 1)
+                break;
         }
-        if (wrong > max)
-            System.out.println(ConsoleColor.RED + "You are out of guesses." + ConsoleColor.RESET);
+        if (wrong > max - 1)
+            System.out.println(ConsoleColor.RED + "You are out of guesses. The word was " + c + "." + ConsoleColor.RESET);
         else
             System.out.println(ConsoleColor.GREEN + "You won! The word was " + c + ". You had " + wrong + " wrong guesses." + ConsoleColor.RESET);
     }
