@@ -1,0 +1,6 @@
+If you run the Java version you have to copy the path to the list in the depend folder(or how you call it).
+After that you need to run the start.bat and paste the path to the folder.
+
+###############################################
+A version i C++ is coming! (Complied on Windows)
+###############################################
