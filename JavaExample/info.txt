@@ -1,6 +1,3 @@
 If you run the Java version you have to copy the path to the list in the depend folder(or how you call it).
-After that you need to run the start.bat and paste the path to the folder.
-
-###############################################
-A version in C++ is coming! (Complied on Windows)
-###############################################
+After that you need to run the start.bat and paste the path to the folder and after that write "next" to start the game.
+You also can run the Hangman.exe and paste the path.
