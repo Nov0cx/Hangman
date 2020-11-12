@@ -15,9 +15,11 @@ int main() {
     vector<string> strings;
     ifstream myfile;
     string path = "C:/Users/nikla/Desktop/JavaExample/depend/list.txt", input;
-    cout << "Write the path to the list and after that next. Example: C:/Users/nikla/Desktop/JavaExample/depend/list.txt" << endl;
-    while(getline(cin, input)) {
-        if(input == "next")
+    cout
+            << "Write the path to the list and after that next. Example: C:/Users/nikla/Desktop/JavaExample/depend/list.txt"
+            << endl;
+    while (getline(cin, input)) {
+        if (input == "next")
             break;
         path = input;
         cout << "You set the path to: " << path << endl;
@@ -39,23 +41,34 @@ int main() {
     }
 
     srand(static_cast<unsigned int>(time(nullptr)));
-    
+
     int wrong = 0, max = 10;
-    int r = rand()%(strings.size() - 0 + 1) + 0;
+    int r = rand() % (strings.size() - 0 + 1) + 0;
     string guess, c = strings[r];
     cout << "Start guessing!" << endl;
     cout << "The word is " << c.length() << " characters long." << endl;
     string pattern;
-    vector<char> guessed = {};
+    vector<char> guessed = {}, v = {};
     vector<string> allGuessed = {};
     for (int i = 0; i < c.length(); i++) {
         pattern.append("_");
+    }
+    int size = 0;
+    for (char car : c) {
+        if (find(v.begin(), v.end(), car) != v.end()) {
+            v.push_back(car);
+            size++;
+        }
     }
     cout << pattern << endl;
 
     //game loop
     while (true) {
-        cin >> guess;
+        if (guessed.size() == size) {
+            cout << "You won! You had " << wrong << " wrong guesses out of " << max << " max possible wrong guesses!" << endl;
+            break;
+        }
+            cin >> guess;
         if (find(allGuessed.begin(), allGuessed.end(), guess) != allGuessed.end()) {
             cout << "You already guessed that character/string!" << endl;
             continue;

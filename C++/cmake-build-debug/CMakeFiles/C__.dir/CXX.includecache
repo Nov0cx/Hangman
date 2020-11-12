@@ -6,3 +6,19 @@
 
 #IncludeRegexTransform: 
 
+D:/GitHub/Hangman/C++/Hangman/Hangman.cpp
+iostream
+-
+fstream
+-
+string
+-
+sstream
+-
+algorithm
+-
+vector
+-
+ctime
+-
+
