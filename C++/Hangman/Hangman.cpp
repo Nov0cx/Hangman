@@ -1,84 +1,102 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstdlib>
+#include <sstream>
 #include <algorithm>
-#include <cctype>
-#include <list>
+#include <vector>
+#include <ctime>
 
 using namespace std;
 
 char asciitolower(char c);
 
-int main()
-{
-    string line, strings[999];
+int main() {
+    string line;
+    vector<string> strings;
     ifstream myfile;
+    string path = "C:/Users/nikla/Desktop/JavaExample/depend/list.txt", input;
+    cout << "Write the path to the list and after that next. Example: C:/Users/nikla/Desktop/JavaExample/depend/list.txt" << endl;
+    while(getline(cin, input)) {
+        if(input == "next")
+            continue;
+        path = input;
+        cout << "You set the path to: " << path << endl;
+    }
     //getting the file
-    myfile.open("C:/Users/nikla/Desktop/JavaExample/depend/list.txt");
-    if (myfile.is_open())
-    {
+    myfile.open(path);
+    if (myfile.is_open()) {
         int i = 0;
         //scanning the file
-        while (getline(myfile, line))
-        {
-            
+        while (getline(myfile, line)) {
+
             transform(line.begin(), line.end(), line.begin(), asciitolower);
-            strings[i] = line;
+            strings.push_back(line);
             i++;
         }
-    }
-    else
-    {
+    } else {
         cout << "Unable to find the file!" << endl;
-        cin;
+        system("pause");
     }
 
+    srand(static_cast<unsigned int>(time(nullptr)));
     //game loop
     int wrong = 0, max = 10;
-    string guess, c = strings[(rand() % strings->length() + 0)];
+    int r = rand()%(strings.size() - 0 + 1) + 0;
+    string guess, c = strings[r];
+    cout << r << endl;
     cout << c << endl;
     cout << "Start guessing!" << endl;
-    while (true) 
-    {
-        if (wrong > max)
-            break;
+    string pattern;
+    vector<char> guessed = {};
+    vector<string> allGuessed = {};
+    for (int i = 0; i < c.length(); i++) {
+        pattern.append("_");
+    }
+    while (true) {
         cin >> guess;
-        if (guess.length() > 1)
-        {
-            if (c == guess)
-            {
-                cout << "You guessed to word! The word was " << c << "." << endl;
-                break;
+        if (find(allGuessed.begin(), allGuessed.end(), guess) != allGuessed.end()) {
+            cout << "You already guessed that character/string!" << endl;
+            continue;
+        }
+        cout << guess.length() << endl;
+        if (c == guess && guess.length() > 1) {
+            cout << "You guessed to word! The word was " << c << "." << endl;
+            break;
+        } else {
+            bool b = false;
+            for (char i : c) {
+                if (i == guess[0]) {
+                    b = true;
+                }
             }
-            else
-            {
-                bool constains = false;
-                for (unsigned int i = 0; i < guess.length() - 1; i++)
-                {
-                    if (c[i] == guess[0])
-                    {
-                        constains = true;
-                    }
+            if (b) {
+                cout << "The character " << guess[0] << " is part of the word." << endl;
+                guessed.push_back(guess[0]);
+                pattern = "";
+                stringstream ss;
+                for (char car : c) {
+                    if (car == guess[0] || find(guessed.begin(), guessed.end(), car) != guessed.end()) {
+                        ss << car;
+                    } else ss << "_";
                 }
-                if (constains)
-                {
-                    cout << "The character " << guess[0] << " is part of the word." << endl;
-                }
-                else
-                {
-                    wrong++;
-                    cout << "The character " << guess[0] << " isn't part of the word. You have " << wrong << " wrong guess of " << max << " possible guesses." << endl;
-                }
+                pattern = ss.str();
+                cout << pattern << endl;
+            } else {
+                wrong++;
+                cout << "The character " << guess[0] << " isn't part of the word. You have " << wrong
+                     << " wrong guess of " << max << " possible guesses." << endl;
             }
         }
+        allGuessed.push_back(guess);
+        if (wrong > max - 1) {
+            break;
+        }
     }
-
+    system("pause");
     return 0;
 }
 
-char asciitolower(char in)
-{
+char asciitolower(char in) {
     if (in <= 'Z' && in >= 'A')
         return in - ('Z' - 'z');
     return in;

@@ -30,7 +30,7 @@ public class Hangman {
             if (line.equals("next"))
                 break;
             path = (line);
-            System.out.println(ConsoleColor.GREEN + "Set path to the list as " + ConsoleColor.AQUA + line + ConsoleColor.GREEN + "." + ConsoleColor.RESET);
+            System.out.println(ConsoleColor.GREEN + "Set path to the list to the path " + ConsoleColor.AQUA + line + ConsoleColor.GREEN + "." + ConsoleColor.RESET);
         }
 
         //adding the list of the file in the list
