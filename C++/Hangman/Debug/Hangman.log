@@ -1,3 +1,4 @@
 ﻿  Hangman.cpp
-D:\GitHub\Hangman\C++\Hangman\Hangman.cpp(53,23): warning C4018: '<': signed/unsigned mismatch
-LINK : fatal error LNK1168: cannot open D:\GitHub\Hangman\C++\Hangman\Debug\Hangman.exe for writing
+D:\GitHub\Hangman\C++\Hangman\Hangman.cpp(58,23): warning C4018: '<': signed/unsigned mismatch
+D:\GitHub\Hangman\C++\Hangman\Hangman.cpp(62,23): warning C4018: '<': signed/unsigned mismatch
+  Hangman.vcxproj -> D:\GitHub\Hangman\C++\Hangman\Debug\Hangman.exe

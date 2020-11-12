@@ -9,22 +9,20 @@
 using namespace std;
 
 char asciitolower(char c);
-string *removeDuplicate(string *str, int n);
 
 int main() {
     string line;
     vector<string> strings;
     ifstream myfile;
     string path = "C:/Users/nikla/Desktop/JavaExample/depend/list.txt", input;
-    cout
-            << "Write the path to the list and after that next. Example: C:/Users/nikla/Desktop/JavaExample/depend/list.txt"
-            << endl;
+    cout << "Write the path to the list and after that next. Example: C:/Users/nikla/Desktop/JavaExample/depend/list.txt" << endl;
     while (getline(cin, input)) {
         if (input == "next")
             break;
         path = input;
         cout << "You set the path to: " << path << endl;
     }
+
     //getting the file
     myfile.open(path);
     if (myfile.is_open()) {
@@ -49,27 +47,18 @@ int main() {
     cout << "Start guessing!" << endl;
     cout << "The word is " << c.length() << " characters long." << endl;
     string pattern;
-    string *a;
-    a = (&c);
     int i = 0;
-    string *str = removeDuplicate(a, i);
     vector<char> guessed = {};
     vector<string> allGuessed = {};
+
     for (int k = 0; k < c.length(); k++) {
         pattern.append("_");
     }
-    int size = 0;
-    for (int j = 0; j < str->length(); j++) {
-        size++;
-    }
+
     cout << pattern << endl;
 
     //game loop
     while (true) {
-        if (guessed.size() == size) {
-            cout << "You won! You had " << wrong << " wrong guesses out of " << max << " max possible wrong guesses! The word was " << c << "." << endl;
-            break;
-        }
             cin >> guess;
         if (find(allGuessed.begin(), allGuessed.end(), guess) != allGuessed.end()) {
             cout << "You already guessed that character/string!" << endl;
@@ -96,6 +85,10 @@ int main() {
                     } else ss << "_";
                 }
                 pattern = ss.str();
+                if (pattern == c) {
+                    cout << "You won! You had " << wrong << " wrong guesses out of " << max << " max possible wrong guesses! The word was " << c << "." << endl;
+                    break;
+                }
                 cout << pattern << endl;
             } else {
                 wrong++;
@@ -105,6 +98,7 @@ int main() {
         }
         allGuessed.push_back(guess);
         if (wrong > max - 1) {
+            cout << "You are out of guesses." << " The word was " << c << "." << endl;
             break;
         }
     }
@@ -116,27 +110,4 @@ char asciitolower(char in) {
     if (in <= 'Z' && in >= 'A')
         return in - ('Z' - 'z');
     return in;
-}
-
-string *removeDuplicate(string *str, int n)
-{
-    // Used as index in the modified string
-    int index = 0;
-
-    // Traverse through all characters
-    for (int i=0; i<n; i++) {
-
-        // Check if str[i] is present before it
-        int j;
-        for (j=0; j<i; j++)
-            if (str[i] == str[j])
-                break;
-
-        // If not present, then add it to
-        // result.
-        if (j == i)
-            str[index++] = str[i];
-    }
-
-    return str;
 }

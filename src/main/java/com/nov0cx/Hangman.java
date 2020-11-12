@@ -68,7 +68,7 @@ public class Hangman {
 
         StringBuilder b = new StringBuilder();
         String realPattern = "";
-        for(Character car : c.toCharArray()) {
+        for (Character car : c.toCharArray()) {
             b.append("_");
         }
         realPattern = b.toString();
@@ -81,7 +81,7 @@ public class Hangman {
                 System.out.println(ConsoleColor.RED + "You can only guess one character at once!" + ConsoleColor.RESET);
                 continue;
             }
-            if(allGuessed.contains(read.toCharArray()[0])) {
+            if (allGuessed.contains(read.toCharArray()[0])) {
                 System.out.println(ConsoleColor.GREEN + "You already guessed that character." + ConsoleColor.RESET);
                 continue;
             }
@@ -93,8 +93,8 @@ public class Hangman {
                 if (!guessed.contains(read.toCharArray()[0]))
                     guessed.add(read.toCharArray()[0]);
                 StringBuilder b2 = new StringBuilder();
-                for(Character car : c.toCharArray()) {
-                    if(car == read.toCharArray()[0] || guessed.contains(car))
+                for (Character car : c.toCharArray()) {
+                    if (car == read.toCharArray()[0] || guessed.contains(car))
                         b2.append(car);
                     else b2.append("_");
                 }
@@ -120,6 +120,5 @@ public class Hangman {
     public static void main(String[] args) {
         new Hangman();
     }
-
 
 }
