@@ -52,6 +52,7 @@ int main() {
         pattern.append("_");
     }
     cout << pattern << endl;
+
     //game loop
     while (true) {
         cin >> guess;
