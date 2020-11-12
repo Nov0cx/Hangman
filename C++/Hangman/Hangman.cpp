@@ -18,7 +18,7 @@ int main() {
     cout << "Write the path to the list and after that next. Example: C:/Users/nikla/Desktop/JavaExample/depend/list.txt" << endl;
     while(getline(cin, input)) {
         if(input == "next")
-            continue;
+            break;
         path = input;
         cout << "You set the path to: " << path << endl;
     }
@@ -39,26 +39,26 @@ int main() {
     }
 
     srand(static_cast<unsigned int>(time(nullptr)));
-    //game loop
+    
     int wrong = 0, max = 10;
     int r = rand()%(strings.size() - 0 + 1) + 0;
     string guess, c = strings[r];
-    cout << r << endl;
-    cout << c << endl;
     cout << "Start guessing!" << endl;
+    cout << "The word is " << c.length() << " characters long." << endl;
     string pattern;
     vector<char> guessed = {};
     vector<string> allGuessed = {};
     for (int i = 0; i < c.length(); i++) {
         pattern.append("_");
     }
+    cout << pattern << endl;
+    //game loop
     while (true) {
         cin >> guess;
         if (find(allGuessed.begin(), allGuessed.end(), guess) != allGuessed.end()) {
             cout << "You already guessed that character/string!" << endl;
             continue;
         }
-        cout << guess.length() << endl;
         if (c == guess && guess.length() > 1) {
             cout << "You guessed to word! The word was " << c << "." << endl;
             break;

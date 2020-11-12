@@ -6,11 +6,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "D:/GitHub/Hangman/C++/Hangman/Hangman.cpp" "D:/GitHub/Hangman/C++/cmake-build-debug/CMakeFiles/C__.dir/Hangman/Hangman.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../."
   "../Hangman"
   )
 
