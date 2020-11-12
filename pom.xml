@@ -6,7 +6,7 @@
 
     <groupId>com.nov0cx</groupId>
     <artifactId>Hangman</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.4-SNAPSHOT</version>
     <name>Hangman</name>
     <developers>
         <developer>
