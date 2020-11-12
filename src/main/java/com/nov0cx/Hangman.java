@@ -30,6 +30,7 @@ public class Hangman {
             if (line.equals("next"))
                 break;
             path = (line);
+            System.out.println(ConsoleColor.GREEN + "Set path to the list as " + ConsoleColor.AQUA + line + ConsoleColor.GREEN + "." + ConsoleColor.RESET);
         }
 
         //adding the list of the file in the list
@@ -73,7 +74,6 @@ public class Hangman {
         realPattern = b.toString();
         System.out.println(ConsoleColor.GREEN + realPattern + ConsoleColor.RESET);
 
-        //_______
         //game loop
         while (guessed.size() != cLength) {
             String read = reader.readLine().toLowerCase();
