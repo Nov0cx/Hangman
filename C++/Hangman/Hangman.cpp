@@ -9,6 +9,7 @@
 using namespace std;
 
 char asciitolower(char c);
+string *removeDuplicate(string *str, int n);
 
 int main() {
     string line;
@@ -48,24 +49,25 @@ int main() {
     cout << "Start guessing!" << endl;
     cout << "The word is " << c.length() << " characters long." << endl;
     string pattern;
-    vector<char> guessed = {}, v = {};
+    string *a;
+    a = (&c);
+    int i = 0;
+    string *str = removeDuplicate(a, i);
+    vector<char> guessed = {};
     vector<string> allGuessed = {};
-    for (int i = 0; i < c.length(); i++) {
+    for (int k = 0; k < c.length(); k++) {
         pattern.append("_");
     }
     int size = 0;
-    for (char car : c) {
-        if (find(v.begin(), v.end(), car) != v.end()) {
-            v.push_back(car);
-            size++;
-        }
+    for (int j = 0; j < str->length(); j++) {
+        size++;
     }
     cout << pattern << endl;
 
     //game loop
     while (true) {
         if (guessed.size() == size) {
-            cout << "You won! You had " << wrong << " wrong guesses out of " << max << " max possible wrong guesses!" << endl;
+            cout << "You won! You had " << wrong << " wrong guesses out of " << max << " max possible wrong guesses! The word was " << c << "." << endl;
             break;
         }
             cin >> guess;
@@ -114,4 +116,27 @@ char asciitolower(char in) {
     if (in <= 'Z' && in >= 'A')
         return in - ('Z' - 'z');
     return in;
+}
+
+string *removeDuplicate(string *str, int n)
+{
+    // Used as index in the modified string
+    int index = 0;
+
+    // Traverse through all characters
+    for (int i=0; i<n; i++) {
+
+        // Check if str[i] is present before it
+        int j;
+        for (j=0; j<i; j++)
+            if (str[i] == str[j])
+                break;
+
+        // If not present, then add it to
+        // result.
+        if (j == i)
+            str[index++] = str[i];
+    }
+
+    return str;
 }
